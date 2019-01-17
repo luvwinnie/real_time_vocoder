@@ -2,7 +2,7 @@ import numpy as np
 import pyqtgraph as pg
 from pyqtgraph.Qt import QtCore
 
-from PyQt5.QtWidgets import (QWidget, QSlider, QApplication, 
+from PyQt5.QtWidgets import (QWidget, QSlider, QApplication, QLCDNumber,
     QHBoxLayout, QVBoxLayout)
 
 from PyQt5.QtCore import QObject, Qt, pyqtSignal,QSize
@@ -37,13 +37,29 @@ class parameterWidget(QWidget):
         self.initUI(minimum,maximum)
 
     def initUI(self,minimum,maximum):
+        self.container = QVBoxLayout()
+        self.container.addStretch(1)
         self.slider = QSlider(Qt.Horizontal, self)
         self.slider.setMinimum(minimum)
         self.slider.setMaximum(maximum)
         self.slider.setTickInterval(1)
         self.slider.setOrientation(QtCore.Qt.Vertical)
         self.slider.setSingleStep(1)
+        self.container.addWidget(self.slider)
+        self.lcd = QLCDNumber()
+        self.lcd.setFixedHeight(100)
+        self.lcd.setFixedWidth(100)
+        self.lcd.resize(50, 100)
+        self.container.addWidget(self.lcd)
+        # self.lcd.setSegmentStyle(QLCDNumber.Filled)
+        self.lcd.setDigitCount(8)
+        self.slider.valueChanged.connect(self.update_lcd)
+        self.container.addStretch(1)
+        self.setLayout(self.container)
 
+    def update_lcd(self,value):
+        print("display",value)
+        self.lcd.display(str(value))
 
 
 class SpectrogramWidget(pg.PlotWidget):
