@@ -22,30 +22,27 @@ class WaveWidget(pg.PlotWidget):
         self.plt.setYRange(-10000,10000)    #y軸の上限、下限の設定
         self.curve=self.plt.plot()  #プロットデータを入れる場所
 
-        self.frameSize = 1024*8
+        self.frameSize = 1024*4
         self.overLap = 0
         self.record = False
         self.read_collected.connect(self.update)
-        # self.data_array = np.array([],dtype=np.int16)
-        
+
     def update(self,chunk):
         self.curve.setData(chunk)   #プロットデータを格納
-        # zcr = ZeroCR(chunk,self.frameSize,self.overLap)
-        # zcr = int(zcr.mean())
-        # self.data_array = np.concatenate(chunk)
-        # print(self.data_array)
 
 
 class parameterWidget(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.initUI()
+    def __init__(self,minimum,maximum):
+        super(parameterWidget,self).__init__()
+        self.initUI(minimum,maximum)
 
-    def initUI(self):
+    def initUI(self,minimum,maximum):
         self.slider = QSlider(Qt.Horizontal, self)
-        self.slider.setRange(0, 50 )
-        self.slider.resize(100,100)
+        self.slider.setMinimum(minimum)
+        self.slider.setMaximum(maximum)
         self.slider.setTickInterval(1)
+        self.slider.setOrientation(QtCore.Qt.Vertical)
+        self.slider.setSingleStep(1)
 
 
 

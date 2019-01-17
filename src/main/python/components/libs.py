@@ -8,15 +8,17 @@ class MicrophoneRecorder:
     def __init__(self, write_flag,*signal):
         self.signals = signal
         self.p = pyaudio.PyAudio()
+
         self.stream = self.p.open(format=pyaudio.paInt16,
                             channels=1,
                             rate=FS,
                             input=True,
-                            output=write_flag)
-                            # frames_per_buffer=CHUNKS)
+                            output=write_flag,
+                            frames_per_buffer=CHUNKS)
         self.write_flag = write_flag
-
-
+        self.f0_numerator_para = 1
+        self.f0_denominator_para = 1
+        self.f0_parameter = self.f0_numerator_para / self.f0_denominator_para
 
     def audio_synthesize(self,y):
         y = np.asarray(y,dtype=np.float)
@@ -26,10 +28,20 @@ class MicrophoneRecorder:
         f0 = pw.stonemask(y, _f0, t, FS)  # pitch refinement
         sp = pw.cheaptrick(y, f0, t, FS)  # extract smoothed spectrogram
         ap = pw.d4c(y, f0, t, FS)         # extract aperiodicity
-        data = pw.synthesize(f0*2, sp, ap, FS)
+        data = pw.synthesize(f0*self.f0_parameter, sp, ap, FS)
         y_new = data[0:before_shape[0]]
         y_new = np.asarray(y_new,dtype=np.int16)
         return y_new
+
+    def numeratorChanged(self,value):
+        self.f0_numerator_para = value
+        self.f0_parameter = self.f0_numerator_para / self.f0_denominator_para
+        print("current numerator value",self.f0_numerator_para)
+
+    def denominatorChanged(self,value):
+        self.f0_denominator_para = value
+        self.f0_parameter = self.f0_numerator_para / self.f0_denominator_para
+        print("current denominator value",self.f0_denominator_para)
 
     def read(self):
         data = self.stream.read(CHUNKS)
@@ -43,4 +55,5 @@ class MicrophoneRecorder:
         self.stream.stop_stream()
         self.stream.close()
         self.p.terminate()
+        # return 1
 
