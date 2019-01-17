@@ -28,14 +28,14 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         # """)
         self.spectogram_widget = SpectrogramWidget()
         self.wave_widget = WaveWidget()
-        self.mic = MicrophoneRecorder(False,spectogram_widget.read_collected,wave_widget.read_collected)
+        self.mic = MicrophoneRecorder(False,self.spectogram_widget.read_collected,self.wave_widget.read_collected)
 
         #　コントロールのレイアウト設定
+        self.createParamterWidget()
 
-
-        d1.addWidget(spectogram_widget)
-        d1.addWidget(wave_widget)
-        d2.addWidget(mainControl)
+        d1.addWidget(self.spectogram_widget)
+        d1.addWidget(self.wave_widget)
+        d2.addWidget(self.mainControl)
         area.addDock(d1)
         area.addDock(d2,"right")
 
@@ -55,7 +55,7 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
 
     def createParamterWidget(self):
         self.mainControl = QtGui.QWidget()
-        mainControl.setStyleSheet("""
+        self.mainControl.setStyleSheet("""
             background:black;
             color:white;
         """)
