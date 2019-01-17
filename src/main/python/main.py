@@ -2,7 +2,7 @@ from fbs_runtime.application_context import ApplicationContext
 from PyQt5.QtWidgets import QMainWindow
 from pyqtgraph.dockarea import DockArea, Dock
 from pyqtgraph.Qt import QtCore, QtGui
-from PyQt5.QtWidgets import (QWidget, QPushButton, QGridLayout, QHBoxLayout, QVBoxLayout)
+from PyQt5.QtWidgets import (QWidget, QHBoxLayout, QVBoxLayout)
 from PyQt5.QtCore import Qt
 # from components.parameterControllerWidget import parameterWidget
 from components.widgets import parameterWidget, SpectrogramWidget, WaveWidget
@@ -32,8 +32,13 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
 
         #　コントロールのレイアウト設定
         mainControl = QtGui.QWidget()
+        mainControl.setStyleSheet("""
+            background:black;
+            color:white;
+        """)
         # main = QGridLayout()
         main = QVBoxLayout()
+        
         main.addStretch(1)
         vbox1 = QHBoxLayout()
         vbox1.addStretch(1)
@@ -48,10 +53,20 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         main.addLayout(vbox1)
         main.addLayout(vbox2)
         main.addLayout(vbox3)
-        numeratorSlider = parameterWidget(1,1000)
         numeratorLabel = QtGui.QLabel("Numerator")
+        numeratorSlider = parameterWidget(1,1000)
+        numeratorSlider.setStyleSheet("""
+            QSlider{
+                background:gray;
+            }
+        """)
         denominatorLabel = QtGui.QLabel("Denominator")
         denominatorSlider = parameterWidget(1,1000)
+        denominatorSlider.setStyleSheet("""
+            QSlider{
+                background:gray;
+            }
+        """)
         numeratorSlider.slider.valueChanged.connect(self.mic.numeratorChanged)
         numeratorSlider.slider.valueChanged.connect(self.changedValue)
         denominatorSlider.slider.valueChanged.connect(self.mic.denominatorChanged)
@@ -84,7 +99,7 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         t = QtCore.QTimer()
         t.timeout.connect(self.mic.read)
         t.start(interval/1000) #QTimer takes ms
-        window.resize(1000,400)
+        window.resize(800,400)
         window.setCentralWidget(area)
         window.show()
         self.app.aboutToQuit.connect(self.mic.close)
