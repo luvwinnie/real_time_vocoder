@@ -26,19 +26,41 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         #         size:100px;
         #     }
         # """)
-        spectogram_widget = SpectrogramWidget()
-        wave_widget = WaveWidget()
+        self.spectogram_widget = SpectrogramWidget()
+        self.wave_widget = WaveWidget()
         self.mic = MicrophoneRecorder(False,spectogram_widget.read_collected,wave_widget.read_collected)
 
         #　コントロールのレイアウト設定
-        mainControl = QtGui.QWidget()
+
+
+        d1.addWidget(spectogram_widget)
+        d1.addWidget(wave_widget)
+        d2.addWidget(mainControl)
+        area.addDock(d1)
+        area.addDock(d2,"right")
+
+
+        interval = CHUNKS/FS
+        t = QtCore.QTimer()
+        t.timeout.connect(self.mic.read)
+        t.start(interval/1000) #QTimer takes ms
+        window.resize(800,400)
+        window.setCentralWidget(area)
+        window.show()
+        self.app.aboutToQuit.connect(self.mic.close)
+        return self.app.exec_()                 # 3. End run() with this line
+
+    def changedValue(self,value):
+            self.pitch_constant.setText("Pitch Constant:{}".format(self.mic.f0_parameter))
+
+    def createParamterWidget(self):
+        self.mainControl = QtGui.QWidget()
         mainControl.setStyleSheet("""
             background:black;
             color:white;
         """)
         # main = QGridLayout()
         main = QVBoxLayout()
-        
         main.addStretch(1)
         vbox1 = QHBoxLayout()
         vbox1.addStretch(1)
@@ -85,28 +107,7 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         vbox3.addStretch(1)
         main.addStretch(1)
         main.setAlignment(Qt.AlignHCenter)
-        mainControl.setLayout(main)
-
-
-        d1.addWidget(spectogram_widget)
-        d1.addWidget(wave_widget)
-        d2.addWidget(mainControl)
-        area.addDock(d1)
-        area.addDock(d2,"right")
-
-
-        interval = CHUNKS/FS
-        t = QtCore.QTimer()
-        t.timeout.connect(self.mic.read)
-        t.start(interval/1000) #QTimer takes ms
-        window.resize(800,400)
-        window.setCentralWidget(area)
-        window.show()
-        self.app.aboutToQuit.connect(self.mic.close)
-        return self.app.exec_()                 # 3. End run() with this line
-
-    def changedValue(self,value):
-            self.pitch_constant.setText("Pitch Constant:{}".format(self.mic.f0_parameter))
+        self.mainControl.setLayout(main)
 
 if __name__ == '__main__':
     appctxt = AppContext()                      # 4. Instantiate the subclass
