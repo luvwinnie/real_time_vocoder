@@ -43,7 +43,7 @@ class parameterWidget(QWidget):
         self.slider.setMinimum(minimum)
         self.slider.setMaximum(maximum)
         self.slider.setTickInterval(1)
-        self.slider.setOrientation(QtCore.Qt.Vertical)
+        # self.slider.setOrientation(QtCore.Qt.Vertical)
         self.slider.setSingleStep(1)
         self.container.addWidget(self.slider)
         self.lcd = QLCDNumber()
