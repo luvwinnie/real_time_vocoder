@@ -1,6 +1,6 @@
 # Real-time Vocoder
 
-## Information
+## Information/説明
 
 This is a real-time vocoder created with PyQtGraph and PyQt5.
 The Vocoder algorithm is used with the WORLD python wrapper.
@@ -48,7 +48,7 @@ $ source real-time-vocoder/bin/activate
 $ export CC=clang;export CXX=clang++;
 $ pip3 install --no-cache-dir -r requirements.txt
 ```
-### Required Package
+### Required Package/必要なパッケージ
 
 ```
 boto3==1.9.81
@@ -70,7 +70,7 @@ urllib3==1.24.1
 ```
 
 
-## Run the Program
+## Run the Program/プログラムの実行
 Once you have done the installation of required packages, please plug in your mic and phone and
 change the directory to `real_time_vocoder` and run the following command.
 
