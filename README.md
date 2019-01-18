@@ -34,6 +34,7 @@ Install the required package with the following command.
 
 ### Ubuntu 18.04LTS
 ```
+$ pip3 install virtualenv
 $ virtualenv --no-site-package real-time-vocoder
 $ source real-time-vocoder/bin/activate
 $ pip3 install --no-cache-dir -r requirements.txt
@@ -41,6 +42,7 @@ $ pip3 install --no-cache-dir -r requirements.txt
 
 ### MacOS Mojave(10.14.2)/XCode 10.1
 ```
+$ pip3 install virtualenv
 $ virtualenv --no-site-package real-time-vocoder
 $ source real-time-vocoder/bin/activate
 $ export CC=clang;export CXX=clang++;
