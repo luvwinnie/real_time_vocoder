@@ -11,7 +11,7 @@ the top.
 
 The program is built with [fman build system](https://build-system.fman.io/) package management system.
 
-これはWORLD音声処理のアルゴリズム、pythonのwrapperを用いて、PyQtGraphまたはPyQt5でGUIを作成し、リアルタイムで音声を録音し、音声合成処理を行い、出力するソフトウェアである。以下のGUIのように左側は音声の生波形とそのスペクトラムをプロットするガジェットであり、右側のガジェットは基本周波数f0を調整するためのものである。f0を調整するためには定数を掛け算するが、その係数は分子(numerator)a割る分母(denominator)bで計算されます。式は以下の様になる。
+これはWORLD音声処理のアルゴリズム、pythonのwrapper,[PyWorld](https://github.com/JeremyCCHsu/Python-Wrapper-for-World-Vocoder)を用いて、PyQtGraphまたはPyQt5でGUIを作成し、リアルタイムで音声を録音し、音声合成処理を行い、出力するソフトウェアである。以下のGUIのように左側は音声の生波形とそのスペクトラムをプロットするガジェットであり、右側のガジェットは基本周波数f0を調整するためのものである。f0を調整するためには定数を掛け算するが、その係数は分子(numerator)a割る分母(denominator)bで計算されます。式は以下の様になる。
 
 このプログラムは[fman build system](https://build-system.fman.io/)のパッケージ管理システムで作成されています。
 
@@ -93,6 +93,8 @@ Please make sure you are plug in the headphone earphone to listen the sound. If 
 必ずヘッドホンやイヤホンを付けて聞いてください。ノートパソコンなどのスピーカで出力すると、
 ハウンリングが起こります。
 </font>
+
+
 
 # License
 GPL v3
