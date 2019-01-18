@@ -94,8 +94,6 @@ Please make sure you are plug in the headphone earphone to listen the sound. If 
 ハウンリングが起こります。
 </font>
 
-
-
 # License
 GPL v3
 
