@@ -11,7 +11,9 @@ the top.
 
 The program is built with [fman build system](https://build-system.fman.io/) package management system.
 
-これはWORLD音声処理のアルゴリズム、pythonのwrapperを用いて、PyQtGraphまたはPyQt5でGUIを作成し、リアルタイムで音声を録音し、音声合成処理を行い、出力するソフトウェアである。以下のGUIのように左側は音声の生波形とそのスペクトラムをプロットするガジェットであり、右側のガジェットは基本周波数f0を調整するためのものである。f0を調整するためには定数を掛け算するが、その係数は分子(numerator)a割る分母(denominator)bで計算されます。式は以下の様になる。また、このプログラムは[fman build system](https://build-system.fman.io/)のパッケージ管理システムで作成されています。
+これはWORLD音声処理のアルゴリズム、pythonのwrapperを用いて、PyQtGraphまたはPyQt5でGUIを作成し、リアルタイムで音声を録音し、音声合成処理を行い、出力するソフトウェアである。以下のGUIのように左側は音声の生波形とそのスペクトラムをプロットするガジェットであり、右側のガジェットは基本周波数f0を調整するためのものである。f0を調整するためには定数を掛け算するが、その係数は分子(numerator)a割る分母(denominator)bで計算されます。式は以下の様になる。
+
+このプログラムは[fman build system](https://build-system.fman.io/)のパッケージ管理システムで作成されています。
 
 <div align="center">
 <img src="http://latex.codecogs.com/gif.latex?pitch%5C%20constant%20%3D%20%5Cfrac%7Ba%7D%7Bb%7D" width="150">
