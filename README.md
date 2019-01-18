@@ -3,10 +3,10 @@
 ## Information
 
 This is a real-time vocoder created with PyQtGraph and PyQt5.
-The Vocoder algorithm is use with the WORLD python wrapper.
+The Vocoder algorithm is used with the WORLD python wrapper.
 
-The right widget of GUI is used to modify f0 paramter by multiplying a constant value which use numerator constant `a` divided by denominator constant `b` which will be formula as below.
-The Left widget is a view to plot the raw wave at the bottom with respective spectrogram at 
+The right widget of GUI is used to modify f0 parameter by multiplying a constant value which uses numerator constant `a` divided by denominator constant `b` which will be the formula as below.
+The Left widget is a view to plotting the raw wave at the bottom with respective spectrogram at 
 the top.
 
 The program is built with [fman build system](https://build-system.fman.io/) package management system.
@@ -24,7 +24,7 @@ The program is built with [fman build system](https://build-system.fman.io/) pac
 ## Requirements
 The software is tested in Ubuntu 18.04LTS and MacOS Mojave(10.14.2) with `python3`.
 You need to install PyQt5, pyqtgraph, PyAudio, pyworld in order to run the program.
-Install the required package with following command.
+Install the required package with the following command.
 
 ### Ubuntu 18.04LTS
 ```
@@ -63,7 +63,7 @@ urllib3==1.24.1
 
 
 ## Run the Program
-Change the directory to `real_time_vocoder` and run the below command.
+Change the directory to `real_time_vocoder` and run the following command.
 
 以上のパッケージをインストールし終わりましたら、マイクとヘッドホンなどを接続し、以下のコマンドで実行する。
 
@@ -74,7 +74,7 @@ fbs run
 
 # <font color="red">CAUTION/注意</font>
 <font color="red">
-Please make sure you are plug in the headphone earphone to listen the sound. If you use the laptop speaker, it will cause the howling.
+Please make sure you are plug in the headphone earphone to listen the sound. If you use the laptop speaker, it will cause the howling effect.
 
 必ずヘッドホンやイヤホンを付けて聞いてください。ノートパソコンなどのスピーカで出力すると、
 ハウンリングが起こります。
