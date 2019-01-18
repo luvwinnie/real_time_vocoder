@@ -93,3 +93,9 @@ Please make sure you are plug in the headphone earphone to listen the sound. If 
 必ずヘッドホンやイヤホンを付けて聞いてください。ノートパソコンなどのスピーカで出力すると、
 ハウンリングが起こります。
 </font>
+
+# License
+GPL v3
+
+# Contributors
+luvwinnie
