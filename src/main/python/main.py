@@ -28,7 +28,7 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         # """)
         self.spectogram_widget = SpectrogramWidget()
         self.wave_widget = WaveWidget()
-        self.mic = MicrophoneRecorder(False,self.spectogram_widget.read_collected,self.wave_widget.read_collected)
+        self.mic = MicrophoneRecorder(True,self.spectogram_widget.read_collected,self.wave_widget.read_collected)
 
         #　コントロールのレイアウト設定
         self.createParamterWidget()
