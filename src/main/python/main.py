@@ -16,8 +16,8 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         version = self.build_settings['version']
         window.setWindowTitle("real_time_vocoder.py v" + version)
         area = DockArea()
-        d1 = Dock("Dock1", size=(800,200),closable=False)
-        d2 = Dock("Dock6 (tabbed) - Plot", size=(200,200),closable=False)
+        d1 = Dock("Plot Widget", size=(800,200),closable=False)
+        d2 = Dock("Parameter Widget", size=(200,200),closable=False)
         # parameter_widget2 = parameterWidget()
         # parameter_widget.setObjectName("F0Slider")
         # parameter_widget.setStyleSheet("""
