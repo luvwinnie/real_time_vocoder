@@ -33,7 +33,7 @@ source real-time-vocoder/bin/activate
 pip3 install --no-cache-dir -r requirements.txt
 ```
 
-### MacOS Mojave(10.14.2)/X Code 10.1
+### MacOS Mojave(10.14.2)/XCode 10.1
 ```
 virtualenv --no-site-package real-time-vocoder
 source real-time-vocoder/bin/activate
