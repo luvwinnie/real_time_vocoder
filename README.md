@@ -1,4 +1,4 @@
-# Real-time vocoder
+# Real-time Vocoder
 
 ## Information
 
