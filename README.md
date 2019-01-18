@@ -5,7 +5,7 @@
 This is a real-time vocoder created with PyQtGraph and PyQt5.
 The Vocoder algorithm is used with the WORLD python wrapper.
 
-The right widget of GUI is used to modify f0 parameter by multiplying a constant value which uses numerator constant `a` divided by denominator constant `b` which will be the formula as below.
+The right widget of GUI is used to modify the fundamental frequency f0 parameter by multiplying a constant value which uses numerator constant `a` divided by denominator constant `b` which will be the formula as below.
 The Left widget is a view to plotting the raw wave at the bottom with respective spectrogram at 
 the top.
 
