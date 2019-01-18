@@ -26,7 +26,7 @@ The software is tested in Ubuntu 18.04LTS and MacOS Mojave(10.14.2) with `python
 You need to install PyQt5, pyqtgraph, PyAudio, pyworld in order to run the program.
 Install the required package with following command.
 
-### Ubuntu
+### Ubuntu 18.04LTS
 ```
 virtualenv --no-site-package real-time-vocoder
 source real-time-vocoder/bin/activate
