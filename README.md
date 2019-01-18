@@ -99,3 +99,7 @@ GPL v3
 
 # Contributors
 luvwinnie
+
+# Reference
+- [WORLD - a high-quality speech analysis, manipulation and synthesis system](https://github.com/mmorise/World)
+- [PyWorldVocoder - A Python wrapper for World Vocoder](https://github.com/JeremyCCHsu/Python-Wrapper-for-World-Vocoder)
