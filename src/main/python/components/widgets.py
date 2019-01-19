@@ -54,7 +54,6 @@ class parameterWidget(QWidget):
 
     @pyqtSlot(int)
     def update_lcd(self,value):
-        print("display",value)
         self.lcd.display(str(value))
 
 
@@ -89,6 +88,7 @@ class SpectrogramWidget(pg.PlotWidget):
         self.win = np.hamming(CHUNKS)
         self.read_collected.connect(self.update)
 
+    @pyqtSlot(np.ndarray)
     def update(self, chunk):
         # normalized, windowed frequencies in data chunk
         spec = np.fft.rfft(chunk*self.win) / CHUNKS

@@ -38,12 +38,10 @@ class MicrophoneRecorder(QObject):
     def numeratorChanged(self,value):
         self.f0_numerator_para = value
         self.f0_parameter = self.f0_numerator_para / self.f0_denominator_para
-        print("current numerator value",self.f0_numerator_para)
 
     def denominatorChanged(self,value):
         self.f0_denominator_para = value
         self.f0_parameter = self.f0_numerator_para / self.f0_denominator_para
-        print("current denominator value",self.f0_denominator_para)
 
     def read(self):
         data = self.stream.read(CHUNKS)
