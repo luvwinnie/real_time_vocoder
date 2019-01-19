@@ -34,9 +34,6 @@ class WaveWidget(pg.PlotWidget):
 class parameterWidget(QWidget):
     def __init__(self,minimum,maximum):
         super(parameterWidget,self).__init__()
-        self.initUI(minimum,maximum)
-
-    def initUI(self,minimum,maximum):
         self.container = QVBoxLayout()
         self.container.addStretch(1)
         self.slider = QSlider(Qt.Horizontal, self)
