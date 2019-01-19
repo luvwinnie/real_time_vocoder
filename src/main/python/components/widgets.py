@@ -5,18 +5,18 @@ from pyqtgraph.Qt import QtCore
 from PyQt5.QtWidgets import (QWidget, QSlider, QApplication, QLCDNumber,
     QHBoxLayout, QVBoxLayout)
 
-from PyQt5.QtCore import QObject, Qt, pyqtSignal,QSize
+from PyQt5.QtCore import QObject, Qt, pyqtSlot,pyqtSignal,QSize
 
 
 from .settings import *
    
 
 class WaveWidget(pg.PlotWidget):
-    read_collected = QtCore.pyqtSignal(np.ndarray)
+    read_collected = pyqtSignal(np.ndarray)
     def __init__(self):
         super(WaveWidget, self).__init__()
         #プロット初期設定
-        # self.enableMouse(False)
+        self.enableMouse(False)
         self.plt = self.getPlotItem()
         self.plt.setMouseEnabled(x=False,y=False)
         self.plt.setYRange(-10000,10000)    #y軸の上限、下限の設定
@@ -52,13 +52,14 @@ class parameterWidget(QWidget):
         self.container.addStretch(1)
         self.setLayout(self.container)
 
+    @pyqtSlot(int)
     def update_lcd(self,value):
         print("display",value)
         self.lcd.display(str(value))
 
 
 class SpectrogramWidget(pg.PlotWidget):
-    read_collected = QtCore.pyqtSignal(np.ndarray)
+    read_collected = pyqtSignal(np.ndarray)
     def __init__(self):
         super(SpectrogramWidget, self).__init__()
         self.img = pg.ImageItem()
@@ -95,7 +96,6 @@ class SpectrogramWidget(pg.PlotWidget):
         psd = abs(spec)
         # convert to dB scale
         psd = 20 * np.log10(psd)
-
         # roll down one and replace leading edge with new data
         self.img_array = np.roll(self.img_array, -1, 0)
         self.img_array[-1:] = psd

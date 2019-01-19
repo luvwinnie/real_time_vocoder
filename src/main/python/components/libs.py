@@ -2,10 +2,12 @@ import numpy as np
 import pyaudio
 import pyworld as pw
 from .settings import *
+from PyQt5.QtCore import QObject
 
 
-class MicrophoneRecorder:
+class MicrophoneRecorder(QObject):
     def __init__(self, write_flag,*signal):
+        super(MicrophoneRecorder,self).__init__()
         self.signals = signal
         self.p = pyaudio.PyAudio()
 
