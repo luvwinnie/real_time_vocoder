@@ -4,7 +4,7 @@ Cython==0.29.2
 docutils==0.14
 fbs==0.6.6
 jmespath==0.9.3
-numpy==1.16.0
+numpy==1.22.0
 PyAudio==0.2.11
 PyQt5==5.11.3
 PyQt5-sip==4.19.13
